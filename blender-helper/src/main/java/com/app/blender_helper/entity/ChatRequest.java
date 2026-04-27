@@ -7,5 +7,6 @@ import lombok.Setter;
 @Setter
 public class ChatRequest {
 
+
     private String message;
 }

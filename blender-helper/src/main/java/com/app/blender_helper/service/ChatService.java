@@ -26,7 +26,7 @@ public class ChatService {
         try {
             ResponseCreateParams params = ResponseCreateParams.builder()
                     .input(input)
-                    .model("gpt-5.4-mini")
+                    .model(System.getenv("openai.api.model"))
                     .build();
 
             Response response = client.responses().create(params);
