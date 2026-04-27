@@ -1,13 +1,14 @@
-package com.app.blender_helper.entity;
+package com.app.blender_helper.model;
 
-import lombok.Getter;
-
-@Getter
 public class ChatResponse {
 
     private String reply;
 
     public ChatResponse(String reply){
         this.reply = reply;
+    }
+
+    public String getReply() {
+        return reply;
     }
 }
