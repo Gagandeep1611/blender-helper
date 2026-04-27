@@ -1,13 +1,13 @@
-package com.api.openAi;
+package com.app.blender_helper;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OpenAiApplication {
+public class BlenderHelperApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OpenAiApplication.class, args);
+		SpringApplication.run(BlenderHelperApplication.class, args);
 	}
 
 }

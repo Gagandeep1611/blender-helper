@@ -1,4 +1,4 @@
-package com.api.openAi.service;
+package com.app.blender_helper.service;
 
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
@@ -7,12 +7,6 @@ import com.openai.models.responses.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
-
-
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Logger;
 
 @Slf4j
 @Service

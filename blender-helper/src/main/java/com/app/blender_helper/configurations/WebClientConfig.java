@@ -1,4 +1,4 @@
-package com.api.openAi.configurations;
+package com.app.blender_helper.configurations;
 
 
 import org.springframework.context.annotation.Bean;

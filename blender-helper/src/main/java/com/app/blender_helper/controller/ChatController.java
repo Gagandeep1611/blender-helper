@@ -1,8 +1,9 @@
-package com.api.openAi.controller;
+package com.app.blender_helper.controller;
 
-import com.api.openAi.entity.ChatRequest;
-import com.api.openAi.entity.ChatResponse;
-import com.api.openAi.service.ChatService;
+
+import com.app.blender_helper.entity.ChatRequest;
+import com.app.blender_helper.entity.ChatResponse;
+import com.app.blender_helper.service.ChatService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

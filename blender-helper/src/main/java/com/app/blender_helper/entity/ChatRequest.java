@@ -1,4 +1,4 @@
-package com.api.openAi.entity;
+package com.app.blender_helper.entity;
 
 import lombok.Getter;
 import lombok.Setter;
