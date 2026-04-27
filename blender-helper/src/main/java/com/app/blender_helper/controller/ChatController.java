@@ -4,6 +4,7 @@ package com.app.blender_helper.controller;
 import com.app.blender_helper.entity.ChatRequest;
 import com.app.blender_helper.entity.ChatResponse;
 import com.app.blender_helper.service.ChatService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,7 @@ public class ChatController {
     }
 
     @PostMapping
-    public ChatResponse chat(@RequestBody ChatRequest request) {
+    public ChatResponse chat(@Valid @RequestBody ChatRequest request) {
         logger.info("Chat API called with payload: "+ request.getMessage());
         String reply = chatService.getChatResponse(request.getMessage());
 
