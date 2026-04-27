@@ -41,7 +41,7 @@
 		<dependency>
 			<groupId>com.openai</groupId>
 			<artifactId>openai-java</artifactId>
-			<version>4.0.0</version>
+			<version>LATEST</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
