@@ -5,13 +5,11 @@ import com.app.blender_helper.entity.ChatRequest;
 import com.app.blender_helper.entity.ChatResponse;
 import com.app.blender_helper.service.ChatService;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.logging.Logger;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/chat")
 public class ChatController {
@@ -24,10 +22,10 @@ public class ChatController {
 
     @PostMapping
     public ChatResponse chat(@Valid @RequestBody ChatRequest request) {
-        logger.info("Chat API called with payload: "+ request.getMessage());
-        String reply = chatService.getChatResponse(request.getMessage());
+        logger.info("Chat API called with payload: "+ request.getInput());
+        String reply = chatService.getChatResponse(request.getInput());
 
-        logger.info("Received response for payload: "+ request.getMessage() + ", response: "+ reply);
+        logger.info("Received response for payload: "+ request.getInput() + ", response: "+ reply);
         return new ChatResponse(reply);
     }
 }

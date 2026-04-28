@@ -35,23 +35,27 @@ public class ChatService {
     }
 
     public String getChatResponse(String input) {
-
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException("Input cannot be null or empty");
+        }
         try {
             ChatCompletionCreateParams params = ChatCompletionCreateParams.builder()
                     .model(model)
                     .addSystemMessage(prompt)// Set the model
                     .addUserMessage(input) // Add user input
-                    .maxCompletionTokens(100) // Optional: limit response length
                     .build();
 
 
 
             ChatCompletion completion = client.chat().completions().create(params);
+            String response = String.valueOf(completion.choices().getFirst().message().content());
 
-            return String.valueOf(completion.choices().getFirst().message().content());
+            return completion.choices().getFirst().message().content().orElseThrow();
         } catch (Exception e) {
             logger.error("OpenAI request failed for model={}", model, e);
             throw new RuntimeException("Failed to generate chat response", e);
         }
     }
+
+
 }
