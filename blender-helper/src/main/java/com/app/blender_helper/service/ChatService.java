@@ -35,6 +35,9 @@ public class ChatService {
         if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException("Input cannot be null or empty");
         }
+        input =  input.replaceAll("[^a-zA-Z0-9\\s]", "");
+        input = input.replaceAll("\\s+", " ").trim();
+
         try {
             ChatCompletionCreateParams params = ChatCompletionCreateParams.builder()
                     .model(model)
