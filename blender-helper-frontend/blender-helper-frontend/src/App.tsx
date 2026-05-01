@@ -41,8 +41,8 @@ function App() {
 return (
   <div
     style={{
-      minHeight: "100vh", // full screen height
-      backgroundColor: "#0f172a", // 🔥 dark background
+      minHeight: "100vh",
+      backgroundColor: "#0f172a",
       padding: "40px 0",
     }}
   >
@@ -77,22 +77,45 @@ return (
         }}
       />
 
-      <button
-        onClick={sendRequest}
-        disabled={loading}
+      {/* Button + Spinner */}
+      <div
         style={{
-          padding: "10px 18px",
-          borderRadius: "8px",
-          border: "none",
-          backgroundColor: loading ? "#64748b" : "#38bdf8",
-          color: "#0f172a",
-          fontWeight: 600,
-          cursor: loading ? "not-allowed" : "pointer",
+          display: "flex",
+          alignItems: "center",
+          gap: "12px",
         }}
       >
-        {loading ? "Thinking..." : "Submit"}
-      </button>
+        <button
+          onClick={sendRequest}
+          disabled={loading}
+          style={{
+            padding: "10px 18px",
+            borderRadius: "8px",
+            border: "none",
+            backgroundColor: loading ? "#64748b" : "#38bdf8",
+            color: "#0f172a",
+            fontWeight: 600,
+            cursor: loading ? "not-allowed" : "pointer",
+          }}
+        >
+          {loading ? "Thinking..." : "Submit"}
+        </button>
 
+        {loading && (
+          <div
+            style={{
+              width: "18px",
+              height: "18px",
+              border: "2px solid #334155",
+              borderTop: "2px solid #38bdf8",
+              borderRadius: "50%",
+              animation: "spin 1s linear infinite",
+            }}
+          />
+        )}
+      </div>
+
+      {/* Response Box */}
       <div
         style={{
           marginTop: "20px",
@@ -102,23 +125,35 @@ return (
           backgroundColor: "#1e293b",
           minHeight: "120px",
           lineHeight: "1.5",
+          color: response.startsWith("Error")
+            ? "#f87171"
+            : "#e2e8f0",
         }}
       >
         <ReactMarkdown
           components={{
-            p: ({ node, ...props }) => (
+            p: ({ ...props }) => (
               <p style={{ margin: "6px 0" }} {...props} />
             ),
-            ol: ({ node, ...props }) => (
-              <ol style={{ paddingLeft: "20px", margin: "6px 0" }} {...props} />
+            ol: ({ ...props }) => (
+              <ol
+                style={{
+                  paddingLeft: "20px",
+                  margin: "6px 0",
+                }}
+                {...props}
+              />
             ),
-            li: ({ node, ...props }) => (
+            li: ({ ...props }) => (
               <li style={{ margin: "4px 0" }} {...props} />
             ),
-            strong: ({ node, ...props }) => (
-              <strong style={{ color: "#38bdf8" }} {...props} />
+            strong: ({ ...props }) => (
+              <strong
+                style={{ color: "#38bdf8" }}
+                {...props}
+              />
             ),
-            code: ({ node, ...props }) => (
+            code: ({ ...props }) => (
               <code
                 style={{
                   backgroundColor: "#334155",
@@ -131,9 +166,22 @@ return (
             ),
           }}
         >
-          {response}
+          {response || "Ask something about Blender..."}
         </ReactMarkdown>
       </div>
+
+      <style>
+        {`
+          @keyframes spin {
+            from {
+              transform: rotate(0deg);
+            }
+            to {
+              transform: rotate(360deg);
+            }
+          }
+        `}
+      </style>
     </div>
   </div>
 );
